@@ -8,6 +8,7 @@ module.exports = {
   action: "GET /withdraw (SEP-0006)",
   execute: async function(state, { request, response, instruction }) {
     const ASSET_CODE = Config.get("ASSET_CODE");
+    state.withdraw_asset  = ASSET_CODE;
     const USER_SK = Config.get("USER_SK");
     const pk = StellarSDK.Keypair.fromSecret(USER_SK).publicKey();
     const transfer_server = state.transfer_server;
